@@ -1,0 +1,21 @@
+{
+	"deepspeech":{
+		"model":"deepspeech-0.9.3-models.tflite",
+		"scorer":"deepspeech-0.9.3-models.scorer"
+	},
+	"server":{
+		"http":{
+			"host":"0.0.0.0",
+			"port":8080,
+			"request_max_size":1048576
+		}
+	},
+	"log":{
+		"level":[
+			{
+				"logger":"deepspeech_sever",
+				"level":"DEBUG"
+			}
+		]
+	}
+}
