@@ -1,0 +1,9 @@
+{
+  "max_allowed_core_version": 21.2,
+  "stt": {
+    "deepspeech_server": {
+      "uri": "http://localhost:8080/stt"
+    },
+    "module": "deepspeech_server"
+  }
+}
