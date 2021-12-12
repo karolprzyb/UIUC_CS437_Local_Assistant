@@ -128,8 +128,8 @@ switch:
 
 wifi:
 
-  ssid: initial_ap2          # !secret wifi_ssid
-  password: asdfasdfasdfasdf # !secret wifi_pass
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
 
   # Uncomment below to set a static IP
   # manual_ip:
@@ -146,13 +146,15 @@ wifi:
   output_power: 17
 
   ap:
-    ssid: ${friendly_name} Hotspot
-    ap_timeout: 2147483647ms      # maximum 32 bit value.  About 3.5 weeks in milliseconds.
+    ssid: "KAUF BLB RECOV"
+    
+  reboot_timeout: 10min
+  
+  fast_connect: true
 
 captive_portal:
 logger:
   # level: verbose
-api:
 ota:
 debug:
 
@@ -162,6 +164,8 @@ web_server:                           # web server allows access to device with 
   js_include: "webserver-v1.min.js"
   js_url: ""
 
+mqtt:
+  broker: !secret mqtt_broker
 
 # PWM outputs for each LED channel
 output:

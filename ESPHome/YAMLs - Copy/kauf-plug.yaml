@@ -52,13 +52,6 @@ captive_portal:
 mqtt:
   broker: !secret mqtt_broker
   
-  birth_message:
-    topic: LA/plug_1/available
-    payload: '1'
-  will_message:
-    topic: LA/plug_1/available
-    payload: '0'
-  
   on_message:
     - topic: LA/plug_1/power
       payload: '1'
