@@ -128,8 +128,8 @@ switch:
 
 wifi:
 
-  ssid: initial_ap2          # !secret wifi_ssid
-  password: asdfasdfasdfasdf # !secret wifi_pass
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
 
   # Uncomment below to set a static IP
   # manual_ip:
@@ -152,7 +152,6 @@ wifi:
 captive_portal:
 logger:
   # level: verbose
-api:
 ota:
 debug:
 
@@ -162,6 +161,8 @@ web_server:                           # web server allows access to device with 
   js_include: "webserver-v1.min.js"
   js_url: ""
 
+mqtt:
+  broker: !secret mqtt_broker
 
 # PWM outputs for each LED channel
 output:
