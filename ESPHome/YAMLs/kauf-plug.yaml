@@ -18,13 +18,13 @@ esphome:
 wifi:
 
   # **** ENTER WI-FI CREDENTIALS HERE, USING SECRETS.YAML RECOMMENDED ****
-  ssid: initial_ap2          # !secret wifi_ssid
-  password: asdfasdfasdfasdf # !secret wifi_pass
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
 
   # Delete the following line to acknowledge that you know that you must enter your home network's
   # wi-fi credentials in the preceding two fields.  If for whatever reason the credentials are typed
   # in wrong you will have to set up a wifi network with the entered credentials to recover your plug.
-  you_must_enter_wifi_credentials_above: true
+  #you_must_enter_wifi_credentials_above: true
 
 
   # Uncomment below to set a static IP
@@ -42,12 +42,22 @@ wifi:
   output_power: 17
 
 
+mqtt:
+  broker: !secret mqtt_broker
+  
+  on_message:
+    - topic: LA/plug_1/power
+      payload: '1'
+      then:
+        switch.turn_on: relay
+    - topic: LA/plug_1/power
+      payload: '0'
+      then:
+        switch.turn_off: relay
+      
 
 logger:                               # Enable logging
 #  baud_rate: 0                       # Disable UART logging since TX pad not easily available
-
-api:                                  # Enable Home Assistant API
-  # password: !secret api_password    # optional password field for Home Assistant API.
 
 ota:
   # password: !secret ota_password    # optional password for OTA updates.
@@ -134,7 +144,7 @@ switch:
 
 # clock input from Home Assistant used to calculate total daily energy
 time:
-  - platform: homeassistant
+  - platform: sntp
     id: homeassistant_time
 
 
