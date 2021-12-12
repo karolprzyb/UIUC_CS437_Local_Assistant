@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.qmlc
+mqtt-light-and-smartplug-control-skill/settings.json
 
 # C extensions
 *.so
