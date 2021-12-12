@@ -1,0 +1,6 @@
+Dim {light_name} to {amount} percent.
+Set {light_name} to {amount} percent.
+Set the dimness of {light_name} to {amount} percent.
+Set the brightness of {light_name} to {amount} percent.
+Increase {light_name} brightness to {amount} percent.
+Decrease {light_name} brightness to {amount} percent.
