@@ -76,8 +76,8 @@ class MqttLightAndSmartplugControl(MycroftSkill):
         })
 
 
-    @intent_file_handler('give.plug.stats.intent')
-    def handle_give_plug_stats(self, message):
+    @intent_file_handler('get.plug.stats.intent')
+    def handle_get_plug_stats(self, message):
         smartplug_name = message.data.get('smartplug_name')  # identifies the different plugs
 
         # do stuff with these variables here
@@ -86,7 +86,7 @@ class MqttLightAndSmartplugControl(MycroftSkill):
         w = None
         v = None
 
-        self.speak_dialog('give.plug.stats', data={
+        self.speak_dialog('get.plug.stats', data={
             'a': a,
             'kwh': kwh,
             'w': w,
@@ -114,31 +114,6 @@ class MqttLightAndSmartplugControl(MycroftSkill):
 
         self.speak_dialog('turn.plug.off', data={
             'smartplug_name': smartplug_name,
-        })
-    
-    
-    @intent_file_handler('control.smartplug.and.light.mqtt.intent')
-    def handle_control_smartplug_and_light_mqtt(self, message):
-        amount = message.data.get('amount')  # % brightness
-        color = message.data.get('color')
-        light_name = message.data.get('light_name')  # identifies the different bulbs
-        smartplug_name = message.data.get('smartplug_name')  # identifies the different plugs
-        a = ''  # amps used by plug right now
-        kwh = ''  # kwh used by plug over the course of the day
-        v = ''  # volts used by plug right now
-        w = ''  # watts used by plug right now
-
-        # do stuff with these variables here
-
-        self.speak_dialog('control.smartplug.and.light.mqtt', data={
-            'a': a,
-            'color': color,
-            'kwh': kwh,
-            'w': w,
-            'amount': amount,
-            'v': v,
-            'smartplug_name': smartplug_name,
-            'light_name': light_name
         })
 
 
