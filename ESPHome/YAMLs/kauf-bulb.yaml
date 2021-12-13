@@ -92,6 +92,39 @@ mqtt:
       then:
         - light.turn_off:
             id: kauf_light
+    - topic: LA/bulb_1/r_col
+      payload: '1'
+      then:
+        - light.turn_off:
+            id: kauf_light
+        - light.turn_on:
+            id: kauf_light
+            brightness: 100%
+            red: 100%
+            green: 0.0
+            blue: 0.0
+    - topic: LA/bulb_1/g_col
+      payload: '1'
+      then:
+        - light.turn_off:
+            id: kauf_light
+        - light.turn_on:
+            id: kauf_light
+            brightness: 100%
+            red: 0.0
+            green: 100%
+            blue: 0.0
+    - topic: LA/bulb_1/b_col
+      payload: '1'
+      then:
+        - light.turn_off:
+            id: kauf_light
+        - light.turn_on:
+            id: kauf_light
+            brightness: 100%
+            red: 0.0
+            green: 0.0
+            blue: 100%
 
 web_server:                           # web server allows access to device with a web browser
   # auth:                             # optional login details for web interface
