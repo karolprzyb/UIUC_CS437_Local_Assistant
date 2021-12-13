@@ -1,0 +1,5 @@
+/mnt/c/Users/Karol/Documents/GitHub/UIUC_CS437_Local_Assistant/ESPHome/YAMLs
+conda activate ESPHome
+mosquitto_pub -h 192.168.1.75 -m 1 -t kauf-plug/sensor/kauf_plug_button/state
+mosquitto_sub -h 192.168.1.75 -t kauf-plug/sensor/kauf_plug_power/state
+/mnt/c/Users/Karol/Documents/GitHub/UIUC_CS437_Local_Assistant/python_mqtt_demo

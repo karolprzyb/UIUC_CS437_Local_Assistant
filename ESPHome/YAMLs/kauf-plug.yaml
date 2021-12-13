@@ -160,6 +160,15 @@ switch:
 time:
   - platform: sntp
     id: homeassistant_time
+    
+#     - seconds: /10
+#        minutes: 0
+#        then:
+#          - mqtt.publish:
+#              topic: LA/plug_1/voltage
+#              payload: 
+#              retain: true
+          
 
 
 sensor:   # Power monitoring sensors output to Home Assistant
@@ -179,7 +188,12 @@ sensor:   # Power monitoring sensors output to Home Assistant
         - calibrate_linear:
             - 0.0 -> 0.0  
             - 333.8 -> 60 # value with 60W bulb.
-      on_value:   # set or clear in_use template binary sensor depending on whether power usage is over threshold
+      on_value:      # set or clear in_use template binary sensor depending on whether power usage is over threshold
+        - mqtt.publish:
+            topic: LA/plug_1/power_meas
+            payload: 'hello'
+  #            lambda: 'return to_string(id(wattage).state);'
+            retain: true
         - if:
             condition:
               lambda: 'return (x >= id(threshold).state);'
