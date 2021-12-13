@@ -128,8 +128,8 @@ switch:
 
 wifi:
 
-  ssid: initial_ap2          # !secret wifi_ssid
-  password: asdfasdfasdfasdf # !secret wifi_pass
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
 
   # Uncomment below to set a static IP
   # manual_ip:
@@ -147,14 +147,35 @@ wifi:
 
   ap:
     ssid: ${friendly_name} Hotspot
-    ap_timeout: 2147483647ms      # maximum 32 bit value.  About 3.5 weeks in milliseconds.
+    ap_timeout: 1min      # maximum 32 bit value.  About 3.5 weeks in milliseconds.
 
 captive_portal:
 logger:
   # level: verbose
-api:
 ota:
 debug:
+
+mqtt:
+  broker: !secret mqtt_broker
+  
+  birth_message:
+    topic: LA/bulb_1/available
+    payload: '1'
+  will_message:
+    topic: LA/bulb_1/available
+    payload: '0'
+  
+  on_message:
+    - topic: LA/bulb_1/light
+      payload: '1'
+      then:
+        - light.turn_on:
+            id: kauf_light
+    - topic: LA/bulb_1/light
+      payload: '0'
+      then:
+        - light.turn_off:
+            id: kauf_light
 
 web_server:                           # web server allows access to device with a web browser
   css_include: "webserver-v1.min.css"
