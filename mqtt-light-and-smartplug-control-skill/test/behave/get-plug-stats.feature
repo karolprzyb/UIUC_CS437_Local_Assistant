@@ -10,7 +10,7 @@ Feature: plug-stats
      Then "mqtt-light-and-smartplug-control-skill" should reply with dialog from "get.plug.stats.dialog"
 
    Examples: plug prompts  # Table heading
-        | stats prompts                                   |   # Column heading
+        | plug stats prompt                               |   # Column heading
         | Give me the energy usage of coffee maker.       |   # First value
         | Give me the energy statistics of coffee maker.  |   # Second value
         | Give me the energy stats of coffee maker.       |   # Third value
