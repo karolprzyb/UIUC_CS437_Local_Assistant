@@ -35,13 +35,6 @@ esphome:
           transition_length: 0s
 
 
-
-
-external_components:
-  - source:
-      type: local
-      path: my_components
-
 wifi:
 
   # **** ENTER WI-FI CREDENTIALS HERE, USING SECRETS.YAML RECOMMENDED ****
@@ -78,6 +71,27 @@ ota:
 debug:                                # outputs additional debug info when logs start
 
 
+mqtt:
+  broker: !secret mqtt_broker
+  
+  birth_message:
+    topic: LA/bulb_1/available
+    payload: '1'
+  will_message:
+    topic: LA/bulb_1/available
+    payload: '0'
+  
+  on_message:
+    - topic: LA/bulb_1/light
+      payload: '1'
+      then:
+        - light.turn_on:
+            id: kauf_light
+    - topic: LA/bulb_1/light
+      payload: '0'
+      then:
+        - light.turn_off:
+            id: kauf_light
 
 web_server:                           # web server allows access to device with a web browser
   # auth:                             # optional login details for web interface

@@ -189,11 +189,6 @@ sensor:   # Power monitoring sensors output to Home Assistant
             - 0.0 -> 0.0  
             - 333.8 -> 60 # value with 60W bulb.
       on_value:      # set or clear in_use template binary sensor depending on whether power usage is over threshold
-        - mqtt.publish:
-            topic: LA/plug_1/power_meas
-            payload: 'hello'
-  #            lambda: 'return to_string(id(wattage).state);'
-            retain: true
         - if:
             condition:
               lambda: 'return (x >= id(threshold).state);'
